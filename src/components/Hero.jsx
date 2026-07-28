@@ -11,8 +11,9 @@
 "use client";
 
 import { Home, ArrowDown, Mail, Download, FolderOpen } from "lucide-react";
-import { motion } from "framer-motion";
-import AudioPlayer from "./AudioPlayer";
+import { motion, useMotionValue, useTransform, useSpring, useAnimationControls } from "framer-motion";
+import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 export default function Hero() {
   // Definisi varian animasi masuk untuk teks dan tombol utama
@@ -41,6 +42,48 @@ export default function Hero() {
       scale: 1,
       transition: { type: "spring", stiffness: 100, damping: 10 },
     },
+  };
+
+  const cardControls = useAnimationControls();
+  const cardX = useMotionValue(0);
+  const cardY = useMotionValue(0);
+  const smoothX = useSpring(cardX, { stiffness: 140, damping: 20 });
+  const smoothY = useSpring(cardY, { stiffness: 140, damping: 20 });
+  const rotateX = useTransform(smoothY, [-1, 1], [6, -6]);
+  const rotateY = useTransform(smoothX, [-1, 1], [-6, 6]);
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    cardControls.start({
+      opacity: 1,
+      x: 0,
+      y: 0,
+      rotate: -8,
+      scale: 1,
+      transition: { type: "spring", stiffness: 140, damping: 18, mass: 0.8, duration: 0.9 },
+    });
+  }, [cardControls]);
+
+  const handlePointerMove = (event) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const offsetX = event.clientX - rect.left - rect.width / 2;
+    const offsetY = event.clientY - rect.top - rect.height / 2;
+    cardX.set(Math.max(-1, Math.min(offsetX / (rect.width / 2), 1)));
+    cardY.set(Math.max(-1, Math.min(offsetY / (rect.height / 2), 1)));
+  };
+
+  const resetCardTilt = () => {
+    cardX.set(0);
+    cardY.set(0);
+  };
+
+  const handleDragEnd = () => {
+    cardControls.start({
+      x: 0,
+      y: 0,
+      transition: { type: "spring", stiffness: 250, damping: 20 },
+    });
   };
 
   return (
@@ -225,7 +268,7 @@ export default function Hero() {
           variants={itemVariants}
           className="font-retro text-[22vw] md:text-[15vw] leading-none text-white tracking-tight drop-shadow-[8px_8px_0px_#121212] select-none uppercase font-black"
         >
-          Muhammad A'iz Nur Aziz
+          Muhammad A&apos;iz Nur Aziz
         </motion.h1>
 
         {/* Subtitle & Deskripsi */}
@@ -284,6 +327,73 @@ export default function Hero() {
           </span>
           <ArrowDown className="w-4 h-4 text-zinc-500 animate-bounce" />
         </motion.div>
+      </motion.div>
+
+      {/* Draggable Nametag */}
+      <motion.div
+        ref={cardRef}
+        className="absolute top-6 left-[-40px] z-50 w-[170px] sm:w-[220px] lg:w-[260px] cursor-grab active:cursor-grabbing select-none"
+        drag
+        dragMomentum={false}
+        dragElastic={0.16}
+        dragConstraints={{ left: -100, right: 220, top: -40, bottom: 180 }}
+        onPointerMove={handlePointerMove}
+        onPointerLeave={resetCardTilt}
+        onDragEnd={handleDragEnd}
+        animate={cardControls}
+        initial={{ opacity: 0, x: -80, y: -120, rotate: -18, scale: 0.9 }}
+        whileHover={{ scale: 1.03, rotate: -5, boxShadow: "0 25px 70px rgba(0,0,0,.38)" }}
+        whileDrag={{ scale: 1.05, boxShadow: "0 35px 90px rgba(0,0,0,.45)" }}
+        style={{
+          rotateX,
+          rotateY,
+          perspective: 700,
+          boxShadow: "0 20px 60px rgba(0,0,0,.35)",
+        }}
+      >
+        <div className="relative overflow-hidden rounded-[28px] border border-white/15 bg-zinc-950/95 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.35)] md:w-[220px] lg:w-[260px]">
+          <div className="absolute left-1/2 top-0 h-4 w-20 -translate-x-1/2 rounded-b-full bg-black/60 shadow-[0_6px_24px_rgba(0,0,0,0.2)]" />
+          <div className="absolute -top-3 left-3 flex items-center gap-2 bg-zinc-950/90 px-3 py-1 rounded-full border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.18)]">
+            <span className="h-2.5 w-2.5 rounded-full bg-han-green" />
+            <span className="text-[9px] uppercase tracking-[0.35em] text-zinc-400 font-bold">
+              ID
+            </span>
+          </div>
+          <div className="p-4 pt-9 pb-5">
+            <div className="flex items-center justify-between gap-3 mb-3">
+              <div className="space-y-1">
+                <p className="text-[10px] uppercase tracking-[0.45em] text-han-yellow font-bold">
+                  Arcade Pass
+                </p>
+                <h2 className="text-[14px] md:text-[16px] font-retro uppercase tracking-[0.12em] text-white">
+                  AIZ CARD
+                </h2>
+              </div>
+              <div className="relative h-10 w-10 rounded-full border border-white/15 bg-white/90 shadow-[0_8px_20px_rgba(0,0,0,0.2)]">
+                <Image src="/file.svg" alt="badge" fill className="object-contain p-2" />
+              </div>
+            </div>
+
+            <div className="space-y-2 text-[10px] md:text-[11px] text-zinc-300">
+              <div className="flex items-center justify-between gap-2">
+                <span className="uppercase tracking-[0.25em] text-zinc-500">Name</span>
+                <span className="font-bold text-white">A&apos;iz</span>
+              </div>
+              <div className="flex items-center justify-between gap-2">
+                <span className="uppercase tracking-[0.25em] text-zinc-500">Role</span>
+                <span className="font-bold text-han-green">Fullstack</span>
+              </div>
+              <div className="flex items-center justify-between gap-2">
+                <span className="uppercase tracking-[0.25em] text-zinc-500">Style</span>
+                <span className="font-bold text-han-orange">Retro</span>
+              </div>
+            </div>
+
+            <div className="mt-4 rounded-2xl border border-white/10 bg-zinc-900/70 px-3 py-2 font-pixel text-[9px] uppercase tracking-[0.35em] text-zinc-400 shadow-[0_6px_16px_rgba(0,0,0,0.18)]">
+              Drag me for a tactile touch
+            </div>
+          </div>
+        </div>
       </motion.div>
     </header>
   );
