@@ -117,13 +117,6 @@ export default function Skills() {
             Keahlian Saya
           </h2>
         </div>
-
-        <div className="flex items-center gap-2 bg-zinc-900 border-2 border-black px-3.5 py-2 shadow-[3px_3px_0px_0px_#000]">
-          <Terminal className="w-4 h-4 text-han-green" />
-          <span className="font-pixel text-[9px] text-zinc-300 uppercase font-bold tracking-wider">
-            STACK_VERIFIED: PRODUCTION READY
-          </span>
-        </div>
       </div>
 
       {/* Asymmetric Bento Layout */}

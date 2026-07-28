@@ -83,16 +83,6 @@ export default function AboutMe() {
               Tentang Saya
             </h2>
           </div>
-
-          <div className="inline-flex items-center gap-2.5 font-pixel text-[9px] text-zinc-300 bg-zinc-900 px-3.5 py-2 border-2 border-zinc-800 shadow-[3px_3px_0px_0px_#000]">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-han-green opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-han-green" />
-            </span>
-            <span className="uppercase font-bold tracking-wider">
-              STATUS: AVAILABLE FOR FREELANCE & FULLTIME
-            </span>
-          </div>
         </div>
 
         {/* Content Grid */}

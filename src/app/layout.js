@@ -20,13 +20,16 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata = {
-  title: "AZZ Portfolio | Brutalist Vinyl Shop Edition",
-  description: "Portfolio interaktif karya Roihan Daffa dengan konsep toko piringan hitam Y2K brutalist. Menampilkan desain kemasan, identitas visual, ilustrasi fiksi ilmiah retro, dan live synthesizer ambient.",
-  keywords: "Roihan Daffa, Portfolio, Brutalist, Vinyl Shop, Web Audio Synthesizer, Y2K Design, Packaging, Branding",
+  title: "MUHAMMAD A'IZ NUR AZIZ",
+  description:
+    "Portfolio interaktif karya Roihan Daffa dengan konsep toko piringan hitam Y2K brutalist. Menampilkan desain kemasan, identitas visual, ilustrasi fiksi ilmiah retro, dan live synthesizer ambient.",
+  keywords:
+    "Roihan Daffa, Portfolio, Brutalist, Vinyl Shop, Web Audio Synthesizer, Y2K Design, Packaging, Branding",
   authors: [{ name: "Roihan Daffa" }],
   openGraph: {
     title: "AZZ Portfolio | Brutalist Vinyl Shop Edition",
-    description: "Portfolio interaktif karya Roihan Daffa dengan konsep toko piringan hitam Y2K brutalist.",
+    description:
+      "Portfolio interaktif karya Roihan Daffa dengan konsep toko piringan hitam Y2K brutalist.",
     type: "website",
   },
 };
