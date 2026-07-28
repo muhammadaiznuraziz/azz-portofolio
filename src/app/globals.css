@@ -137,10 +137,15 @@ button {
   background-color: #e3e4e9 !important;
   border-bottom-color: #121212 !important;
 }
-.light main, .light section {
+.light main,
+.light section {
   color: #121212 !important;
 }
-.light h1, .light h2, .light h3, .light h4, .light p {
+.light h1,
+.light h2,
+.light h3,
+.light h4,
+.light p {
   color: #121212 !important;
 }
 .light .text-zinc-400 {
@@ -174,4 +179,17 @@ button {
   .custom-cursor-active [role="button"] {
     cursor: none !important;
   }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
 }

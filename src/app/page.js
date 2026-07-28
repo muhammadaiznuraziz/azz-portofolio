@@ -51,7 +51,7 @@ export default function Home() {
     <>
       {/* 1. Komponen Animasi Preloader Pembuka */}
       <AnimatePresence mode="wait">
-        {isLoading && <IntroLoader onComplete={() => setIsLoading(false)} />}
+        {isLoading && <IntroLoader key="intro-loader" onComplete={() => setIsLoading(false)} />}
       </AnimatePresence>
 
       {/* 2. Seluruh Konten Utama Website */}

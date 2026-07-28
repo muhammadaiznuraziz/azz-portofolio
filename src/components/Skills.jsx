@@ -1,143 +1,261 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
+import { Terminal, Cpu, Database, Wrench, Sparkles } from "lucide-react";
 
-// Database keahlian riil tanpa kategori design
+// Database keahlian riil dengan Metadata Level & Focus
 const skillCategories = [
   {
     id: "frontend",
-    label: "Frontend",
-    icon: "⚡",
+    label: "Frontend Systems",
+    icon: <Cpu className="w-6 h-6 text-black" />,
+    badge: "PRIMARY FOCUS",
     colorClass: "bg-han-green",
     borderAccent: "border-han-green",
     skills: [
-      { name: "HTML", level: 90 },
-      { name: "CSS", level: 85 },
-      { name: "JavaScript", level: 80 },
-      { name: "React", level: 75 },
-      { name: "Next.js", level: 70 },
-      { name: "Tailwind CSS", level: 85 },
+      { name: "React / Next.js", levelTag: "EXPERT", level: 90, exp: "3+ YRS" },
+      {
+        name: "TypeScript / JS",
+        levelTag: "ADVANCED",
+        level: 85,
+        exp: "3+ YRS",
+      },
+      { name: "Tailwind CSS", levelTag: "EXPERT", level: 92, exp: "3+ YRS" },
+      {
+        name: "State Management",
+        levelTag: "ADVANCED",
+        level: 80,
+        exp: "Redux / Zustand",
+      },
+      {
+        name: "HTML5 / CSS3",
+        levelTag: "EXPERT",
+        level: 95,
+        exp: "Semantic & A11y",
+      },
     ],
   },
   {
     id: "backend",
-    label: "Backend",
-    icon: "🔧",
-    colorClass: "bg-han-orange",
-    borderAccent: "border-han-orange",
+    label: "Backend & Cloud",
+    icon: <Database className="w-6 h-6 text-black" />,
+    badge: "CORE STACK",
+    colorClass: "bg-amber-400",
+    borderAccent: "border-amber-400",
     skills: [
-      { name: "Node.js", level: 60 },
-      { name: "MySQL", level: 65 },
-      { name: "Firebase", level: 70 },
-      { name: "Supabase", level: 75 },
+      {
+        name: "Node.js / Express",
+        levelTag: "INTERMEDIATE",
+        level: 70,
+        exp: "API Dev",
+      },
+      {
+        name: "Supabase / Firebase",
+        levelTag: "ADVANCED",
+        level: 80,
+        exp: "Auth & DB",
+      },
+      {
+        name: "MySQL / PostgreSQL",
+        levelTag: "INTERMEDIATE",
+        level: 68,
+        exp: "Relational Schema",
+      },
     ],
   },
 ];
 
-// Varian animasi untuk card bento muncul dari bawah secara sekuensial
+const toolsList = [
+  "Git & GitHub",
+  "Postman",
+  "Vercel / Docker",
+  "Figma to Code",
+  "Pnpm / Bun",
+  "VS Code Pro",
+];
+
 const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 30 },
   visible: (i) => ({
     opacity: 1,
     y: 0,
     transition: {
-      delay: i * 0.15,
-      duration: 0.6,
-      ease: [0.215, 0.61, 0.355, 1],
+      delay: i * 0.1,
+      duration: 0.5,
+      ease: [0.16, 1, 0.3, 1],
     },
   }),
 };
 
-// Varian animasi untuk progress bar mengisi dari kiri kaku murni
 const barVariants = {
-  hidden: { width: 0 },
+  hidden: { width: "0%" },
   visible: (level) => ({
     width: `${level}%`,
-    transition: { duration: 1, ease: [0.25, 1, 0.5, 1], delay: 0.3 },
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 },
   }),
 };
 
 export default function Skills() {
+  const [activeHoverSkill, setActiveHoverSkill] = useState(null);
+
   return (
     <section
       id="skills"
-      className="max-w-7xl mx-auto px-6 pt-32 pb-24 md:pt-28 z-10 relative scroll-mt-24"
+      className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-20 md:py-28 z-10 relative scroll-mt-20 select-none"
     >
-      {/* Judul Section */}
-      <div className="mb-16 border-b-4 border-zinc-800 pb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+      {/* Header Section */}
+      <div className="mb-12 border-b-4 border-zinc-800 pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
-          <span className="font-pixel text-xs text-han-green uppercase tracking-widest">
-            Technical Stack
-          </span>
-          <h2 className="font-retro text-6xl md:text-7xl font-bold text-white mt-2">
+          <div className="flex items-center gap-2 mb-1">
+            <span className="w-2.5 h-2.5 bg-han-green" />
+            <span className="font-pixel text-[10px] text-han-green uppercase tracking-widest font-bold">
+              TECH_STACK // CAPABILITIES
+            </span>
+          </div>
+          <h2 className="font-retro text-4xl sm:text-6xl md:text-7xl font-black text-white uppercase tracking-tighter">
             Keahlian Saya
           </h2>
         </div>
-        <p className="font-sans text-sm text-zinc-400 max-w-sm leading-relaxed">
-          Arsitektur teknologi tervalidasi yang saya gunakan untuk merekayasa
-          antarmuka digital berperforma tinggi dan terkonversi dengan baik.
-        </p>
+
+        <div className="flex items-center gap-2 bg-zinc-900 border-2 border-black px-3.5 py-2 shadow-[3px_3px_0px_0px_#000]">
+          <Terminal className="w-4 h-4 text-han-green" />
+          <span className="font-pixel text-[9px] text-zinc-300 uppercase font-bold tracking-wider">
+            STACK_VERIFIED: PRODUCTION READY
+          </span>
+        </div>
       </div>
 
-      {/* Grid Kategori Keahlian - Menjadi 2 Kolom Secara Otomatis di Layar Medium/Besar */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-        {skillCategories.map((cat, catIndex) => (
-          <motion.div
-            key={cat.id}
-            custom={catIndex}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            variants={cardVariants}
-            className="bento-card border-4 border-zinc-800 p-8 bg-zinc-900/30 flex flex-col gap-6 shadow-[6px_6px_0px_0px_#000]"
-          >
-            {/* Header Kategori */}
-            <div className="flex items-center gap-4">
-              <div
-                className={`w-14 h-14 ${cat.colorClass} border-4 border-black flex items-center justify-center text-2xl shadow-[4px_4px_0px_0px_#000] text-black`}
-              >
-                {cat.icon}
-              </div>
+      {/* Asymmetric Bento Layout */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        {/* Main Skill Cards (8 Cols on Desktop) */}
+        <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+          {skillCategories.map((cat, catIndex) => (
+            <motion.div
+              key={cat.id}
+              custom={catIndex}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-40px" }}
+              variants={cardVariants}
+              className="bg-zinc-900 border-4 border-black p-6 flex flex-col justify-between shadow-[8px_8px_0px_0px_#000] relative overflow-hidden group"
+            >
+              {/* Header Kategori */}
               <div>
-                <span className="font-pixel text-[9px] text-zinc-500 uppercase tracking-widest block">
-                  Category
-                </span>
-                <h3 className="font-retro text-3xl font-extrabold text-white uppercase tracking-tight">
-                  {cat.label}
-                </h3>
+                <div className="flex items-center justify-between gap-3 mb-6 border-b-2 border-zinc-800 pb-4">
+                  <div className="flex items-center gap-3">
+                    <div
+                      className={`w-12 h-12 ${cat.colorClass} border-2 border-black flex items-center justify-center shadow-[3px_3px_0px_0px_#000] shrink-0`}
+                    >
+                      {cat.icon}
+                    </div>
+                    <div>
+                      <span className="font-pixel text-[8px] text-zinc-500 uppercase tracking-widest block">
+                        CATEGORY
+                      </span>
+                      <h3 className="font-retro text-2xl font-extrabold text-white uppercase tracking-tight leading-none">
+                        {cat.label}
+                      </h3>
+                    </div>
+                  </div>
+                  <span className="font-pixel text-[8px] bg-zinc-950 text-zinc-400 px-2 py-1 border border-zinc-800 font-bold">
+                    {cat.badge}
+                  </span>
+                </div>
+
+                {/* Daftar Item Keahlian */}
+                <div className="space-y-4">
+                  {cat.skills.map((skill) => (
+                    <div
+                      key={skill.name}
+                      onMouseEnter={() => setActiveHoverSkill(skill.name)}
+                      onMouseLeave={() => setActiveHoverSkill(null)}
+                      className="p-2 border border-transparent hover:border-zinc-800 hover:bg-zinc-950/60 transition-all rounded-none"
+                    >
+                      {/* Label & Level Badge */}
+                      <div className="flex justify-between items-center mb-1.5">
+                        <span className="font-pixel text-[9.5px] text-zinc-200 uppercase tracking-wide font-bold flex items-center gap-1.5">
+                          {skill.name}
+                        </span>
+                        <div className="flex items-center gap-2">
+                          <span className="font-mono text-[9px] text-zinc-500">
+                            {skill.exp}
+                          </span>
+                          <span
+                            className={`font-pixel text-[7.5px] px-1.5 py-0.5 border border-black font-bold uppercase ${
+                              activeHoverSkill === skill.name
+                                ? `${cat.colorClass} text-black`
+                                : "bg-zinc-950 text-zinc-400"
+                            }`}
+                          >
+                            {skill.levelTag}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Progress Bar Brutalist Block */}
+                      <div className="w-full h-2.5 bg-zinc-950 border border-zinc-800 relative overflow-hidden">
+                        <motion.div
+                          custom={skill.level}
+                          initial="hidden"
+                          whileInView="visible"
+                          viewport={{ once: true }}
+                          variants={barVariants}
+                          className={`absolute left-0 top-0 h-full ${cat.colorClass} border-r border-black`}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Side Bento Card: Tools & Engineering Practices (4 Cols) */}
+        <motion.div
+          custom={2}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={cardVariants}
+          className="lg:col-span-4 bg-zinc-900 border-4 border-black p-6 flex flex-col justify-between shadow-[8px_8px_0px_0px_#000] relative"
+        >
+          <div>
+            <div className="flex items-center justify-between gap-3 mb-6 border-b-2 border-zinc-800 pb-4">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-purple-500 border-2 border-black flex items-center justify-center shadow-[3px_3px_0px_0px_#000] shrink-0 text-black">
+                  <Wrench className="w-6 h-6" />
+                </div>
+                <div>
+                  <span className="font-pixel text-[8px] text-zinc-500 uppercase tracking-widest block">
+                    ECOSYSTEM
+                  </span>
+                  <h3 className="font-retro text-2xl font-extrabold text-white uppercase tracking-tight leading-none">
+                    Tools & Utilities
+                  </h3>
+                </div>
               </div>
             </div>
 
-            {/* Daftar Item Keahlian */}
-            <div className="space-y-5 pt-2">
-              {cat.skills.map((skill) => (
-                <div key={skill.name} className="group">
-                  {/* Label */}
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="font-pixel text-[9px] text-zinc-300 uppercase tracking-wide group-hover:text-white transition-colors">
-                      {skill.name}
-                    </span>
-                    <span className="font-mono text-[10px] text-zinc-500 group-hover:text-zinc-300 transition-colors">
-                      {skill.level}%
-                    </span>
-                  </div>
+            <p className="font-sans text-xs text-zinc-400 mb-6 leading-relaxed">
+              Peralatan kerja dan workflow sehari-hari yang digunakan untuk
+              menjamin efisiensi pengembangan dan kebersihan arsitektur kode.
+            </p>
 
-                  {/* Konstruksi Progress Bar Kasar Brutalist */}
-                  <div className="w-full h-3 bg-zinc-950 border-2 border-zinc-800 relative overflow-hidden">
-                    <motion.div
-                      custom={skill.level}
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true }}
-                      variants={barVariants}
-                      className={`absolute left-0 top-0 h-full border-r-2 border-black ${cat.colorClass}`}
-                    />
-                  </div>
+            {/* Tool Chips Grid */}
+            <div className="flex flex-wrap gap-2">
+              {toolsList.map((tool) => (
+                <div
+                  key={tool}
+                  className="bg-zinc-950 border-2 border-black px-3 py-2 font-pixel text-[8.5px] text-zinc-300 uppercase tracking-wider font-bold shadow-[2px_2px_0px_0px_#000] hover:bg-han-green hover:text-black transition-colors"
+                >
+                  {tool}
                 </div>
               ))}
             </div>
-          </motion.div>
-        ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
