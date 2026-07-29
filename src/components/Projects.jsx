@@ -144,7 +144,7 @@ export default function Projects() {
             <div className="flex items-center gap-2 mb-1">
               <span className="w-2.5 h-2.5 bg-han-green" />
               <span className="font-pixel text-[10px] uppercase tracking-widest text-han-green font-bold">
-                // 03. PORTFOLIO SHOWCASE
+                PORTFOLIO SHOWCASE
               </span>
             </div>
             <h2 className="font-retro text-4xl sm:text-5xl md:text-6xl font-black text-white uppercase tracking-tighter">

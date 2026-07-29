@@ -62,9 +62,12 @@ export default function Contact() {
         {/* Header Section */}
         <div className="mb-12 border-b-4 border-zinc-800 pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <span className="font-pixel text-[10px] uppercase tracking-widest text-han-green font-bold">
-              // 05. Direct Communication
-            </span>
+            <div className="flex items-center gap-2 mb-1">
+              <span className="w-2 h-2 bg-han-green" />
+              <span className="font-pixel text-[10px] text-han-green uppercase tracking-widest font-bold">
+                direct communication
+              </span>
+            </div>
             <h2 className="font-retro text-4xl sm:text-5xl md:text-6xl font-black text-white uppercase tracking-tighter mt-1">
               Hubungi Saya
             </h2>

@@ -104,10 +104,10 @@ export default function Experience() {
         {/* Header Section */}
         <div className="mb-10 sm:mb-12 border-b-4 border-black pb-6 sm:pb-8 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
           <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 bg-zinc-900 border-2 border-black px-3 py-1.5 shadow-[3px_3px_0px_0px_#000]">
-              <Terminal className="w-3.5 h-3.5 text-han-green shrink-0" />
-              <span className="font-pixel text-[9px] text-han-green uppercase tracking-widest font-bold">
-                // 04. CAREER & ACADEMIC LOG
+            <div className="flex items-center gap-2 mb-1">
+              <span className="w-2 h-2 bg-han-green" />
+              <span className="font-pixel text-[10px] text-han-green uppercase tracking-widest font-bold">
+                carrer & education
               </span>
             </div>
 

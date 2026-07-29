@@ -66,14 +66,7 @@ const skillCategories = [
   },
 ];
 
-const toolsList = [
-  "Git & GitHub",
-  "Postman",
-  "Vercel / Docker",
-  "Figma to Code",
-  "Pnpm / Bun",
-  "VS Code Pro",
-];
+const toolsList = ["Git & GitHub", "Vercel / Docker", "VS Code"];
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -110,7 +103,7 @@ export default function Skills() {
           <div className="flex items-center gap-2 mb-1">
             <span className="w-2.5 h-2.5 bg-han-green" />
             <span className="font-pixel text-[10px] text-han-green uppercase tracking-widest font-bold">
-              TECH_STACK // CAPABILITIES
+              TECH STACK
             </span>
           </div>
           <h2 className="font-retro text-4xl sm:text-6xl md:text-7xl font-black text-white uppercase tracking-tighter">

@@ -76,7 +76,7 @@ export default function AboutMe() {
             <div className="flex items-center gap-2 mb-1">
               <span className="w-2 h-2 bg-han-green" />
               <span className="font-pixel text-[10px] text-han-green uppercase tracking-widest font-bold">
-                SYSTEM_INFO // SECTION_02
+                About Me
               </span>
             </div>
             <h2 className="font-retro text-4xl sm:text-5xl md:text-6xl font-black text-white uppercase tracking-tighter">
