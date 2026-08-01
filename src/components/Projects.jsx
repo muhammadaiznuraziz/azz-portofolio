@@ -35,7 +35,7 @@ const projects = [
     categoryColor: "text-han-green",
     badgeText: "FEATURED",
     badgeBg: "bg-han-green text-black",
-    liveUrl: "https://snapazzhot.web.id",
+    liveUrl: "https://snapazzhot.my.id",
     githubUrl: "#",
   },
   {
@@ -58,7 +58,7 @@ const projects = [
     categoryColor: "text-lime-400",
     badgeText: "PROJECT 02",
     badgeBg: "bg-lime-400 text-black",
-    liveUrl: "https://snapazzhot-v2.vercel.app",
+    liveUrl: "https://snapazzhot.web.id",
     githubUrl: "#",
   },
   {
@@ -172,12 +172,6 @@ export default function Projects() {
               <div>
                 {/* Console Bar Header */}
                 <div className="bg-zinc-950 px-3.5 py-2.5 border-b-4 border-black flex items-center justify-between font-pixel text-[9px]">
-                  <div className="flex items-center gap-2">
-                    <Terminal className="w-3.5 h-3.5 text-han-green" />
-                    <span className="text-zinc-300 font-bold tracking-wider">
-                      PRJ_0{index + 1}.EXE
-                    </span>
-                  </div>
                   <span
                     className={`${project.categoryColor} font-bold uppercase`}
                   >

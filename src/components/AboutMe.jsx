@@ -18,19 +18,15 @@ import {
 const GALLERY_IMAGES = [
   {
     src: "/images/1.jpg",
-    title: "Personal Portrait",
   },
   {
     src: "/images/2.jpg",
-    title: "Creative Workspace",
   },
   {
     src: "/images/3.jpg",
-    title: "Design & Development",
   },
   {
     src: "/images/4.jpg",
-    title: "Minimalist Setup",
   },
 ];
 
@@ -98,15 +94,6 @@ export default function AboutMe() {
             {/* Window Top Bar */}
             <div className="bg-zinc-950 px-4 py-3 border-b-4 border-black flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Terminal className="w-4 h-4 text-han-green" />
-                <span className="font-pixel text-[10px] text-zinc-300 uppercase tracking-widest font-bold">
-                  BIO_DATA.TXT
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-[9px] text-zinc-600 hidden sm:inline">
-                  UTF-8 // READ_ONLY
-                </span>
                 <div className="flex gap-1.5">
                   <div className="w-2.5 h-2.5 border border-black bg-zinc-700" />
                   <div className="w-2.5 h-2.5 border border-black bg-zinc-700" />
@@ -211,12 +198,7 @@ export default function AboutMe() {
           >
             {/* Gallery Top Label */}
             <div className="flex items-center justify-between border-b-4 border-black pb-3">
-              <div className="flex items-center gap-1.5">
-                <Zap className="w-3.5 h-3.5 text-han-green fill-han-green" />
-                <span className="font-pixel text-[9px] text-zinc-200 uppercase tracking-widest font-bold">
-                  VISUAL_SNAPSHOTS
-                </span>
-              </div>
+              <div className="flex items-center gap-1.5"></div>
               <span className="font-pixel text-[9px] text-black bg-han-green px-2 py-0.5 border border-black font-bold">
                 0{index + 1} / 0{GALLERY_IMAGES.length}
               </span>
@@ -243,19 +225,6 @@ export default function AboutMe() {
 
               {/* Overlay CRT Scanline Effect */}
               <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.35)_50%)] bg-[length:100%_4px] pointer-events-none z-10" />
-
-              {/* Bottom Caption Overlay */}
-              <div className="absolute bottom-0 inset-x-0 bg-zinc-950/90 border-t-2 border-black p-3 backdrop-blur-md z-20 flex items-center justify-between">
-                <div>
-                  <p className="font-pixel text-[7px] text-han-green uppercase tracking-widest">
-                    {current.subtitle}
-                  </p>
-                  <p className="font-pixel text-[10px] text-white uppercase tracking-wider font-bold truncate">
-                    {current.title}
-                  </p>
-                </div>
-                <Sparkles className="w-3.5 h-3.5 text-han-green shrink-0" />
-              </div>
 
               {/* Manual Touch/Click Navigation Overlay Controls */}
               <div className="absolute inset-x-2 top-1/2 -translate-y-1/2 flex items-center justify-between z-30 pointer-events-none">
@@ -303,9 +272,6 @@ export default function AboutMe() {
                     />
                   ))}
                 </div>
-                <span className="font-pixel text-[7.5px] text-zinc-500 uppercase tracking-widest font-bold">
-                  AUTO_ROTATE: ON
-                </span>
               </div>
             </div>
           </motion.div>
